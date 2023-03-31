@@ -1,14 +1,16 @@
 <?php
-    # /usuarios.php
+    # /usuario_ver.php
     require('verifica_login.php');
     require('twig_carregar.php');
     
     require('models/Model.php');
     require('models/Usuario.php');
 
-    $usr = new Usuario();
-    $usuarios = $usr->getAll();
+    $id = $_GET['id'] ?? false;
 
-    echo $twig->render('usuarios.html', [
-        'usuarios' => $usuarios,
+    $usr = new Usuario();
+    $info = $usr->getById($id);
+    var_dump($info);die;
+
+    echo $twig->render('usuario_ver.html', [
     ]);
