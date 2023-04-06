@@ -14,13 +14,13 @@
 
     $pass = password_hash($pass, PASSWORD_BCRYPT);
 
-    $usr = new Usuario();
-    $usr->create([
-        'username' => $user,
-        'senha' => $pass,
-        'admin' => $admin,
-        'ativo' => 1,
-    ]);
+    $sql = $pdo->prepare('INSERT INTO usuarios (username, senha, admin, ativo) VALUES (:user, :pass, :admin, 1)');
+
+    $sql->bindParam(':user', $user);
+    $sql->bindParam(':pass', $pass);
+    $sql->bindParam(':admin', $admin);
+
+    $sql->execute();
 
     header('location:usuarios.php');
 

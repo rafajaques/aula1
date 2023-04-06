@@ -37,4 +37,32 @@ class Model
         return $sql->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function create($data) {
+        // Inicia a construção do SQL
+        $sql = "INSERT INTO {$this->table}";
+
+        // Prepara os campos e placeholders
+        foreach (array_keys($data) as $field) {
+            $sql_fields[] = "{$field} = :{$field}";
+        }
+
+        $sql_fields = implode(', ', $sql_fields);
+        
+        // Monta a consulta
+        $sql .= " SET {$sql_fields}";
+
+        // Prepara e roda no banco
+        $insert = $this->conex->prepare($sql);
+
+        // Faz os binds nos valores
+        // foreach ($data as $field => $value) {
+        //     $insert->bindValue(":{$field}", $value);
+        // }
+
+        // Roda a consulta
+        $insert->execute($data);
+        
+        return $insert->errorInfo();
+    }
+
 }
