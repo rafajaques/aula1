@@ -1,8 +1,9 @@
 {# templates/usuarios.html #}
 {% extends "inc/base.html" %}
 
+{% block titulo %}Usuários{% endblock %}
+
 {% block conteudo %}
-    <h1>Usuários</h1>
     <p>Listagem de usuários</p>
 
         <table border="1">
@@ -18,7 +19,7 @@
             <td><a href="/usuario_ver/{{usr.id}}">{{ usr.username }}</a></td>
             <td>{{ usr.admin }}</td>
             <td>{{ usr.ativo }}</td>
-            <td><a href="usuario_apagar.php?id={{usr.id}}">Apagar</a></td>
+            <td><a href="/usuario_apagar/{{usr.id}}">Apagar</a></td>
         </tr>
         <!-- / Linha para repetir -->
         {% else %}

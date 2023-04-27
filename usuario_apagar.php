@@ -11,7 +11,7 @@
             $sql = $pdo->prepare('UPDATE usuarios SET ativo = 0 WHERE id = ?');
             $sql->execute([$id]);
         }
-        header('location:usuarios.php');
+        header('location:/usuarios');
         die;
     }
 
