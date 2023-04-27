@@ -10,4 +10,5 @@ C:\xampp\apache\conf\extra\httpd-vhosts.conf
 <Directory "C:\xampp\htdocs\aula1">
     AllowOverride All
     Require all granted
-</Directory>```
+</Directory>
+```
