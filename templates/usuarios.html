@@ -1,6 +1,7 @@
 {# templates/usuarios.html #}
-{% include "inc/head.html" %}
+{% extends "inc/base.html" %}
 
+{% block conteudo %}
     <h1>Usuários</h1>
     <p>Listagem de usuários</p>
 
@@ -14,7 +15,7 @@
         {% for usr in usuarios %}
         <!-- Linha para repetir -->
         <tr>
-            <td><a href="usuario_ver.php?id={{usr.id}}">{{ usr.username }}</a></td>
+            <td><a href="/usuario_ver/{{usr.id}}">{{ usr.username }}</a></td>
             <td>{{ usr.admin }}</td>
             <td>{{ usr.ativo }}</td>
             <td><a href="usuario_apagar.php?id={{usr.id}}">Apagar</a></td>
@@ -30,4 +31,4 @@
 
     <a href="novo_usuario.php">Adicionar usuário</a>
 
-{% include "inc/foot.html" %}
+{% endblock %}
