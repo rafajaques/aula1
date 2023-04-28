@@ -1,14 +1,37 @@
-{% include "inc/head.html" %}
+{# templates/usuarios.html #}
+{% extends "inc/base.html" %}
 
-<form method="post" action="novo_usuario_gravar.php">
-    <div><input type="text" name="user" placeholder="Usuário"></div>
-    <div><input type="password" name="pass" placeholder="Senha"></div>
+{% block titulo %}Usuários{% endblock %}
 
-    <div>
-        <label><input type="checkbox" name="admin"> Admin</label>
+{% block conteudo %}
+
+<div class="mx-auto max-w-xl">
+  <form action="/novo_usuario_gravar" class="space-y-5" method="post">
+    <div class="grid grid-cols-3 items-center">
+      <label for="example4" class="col-span-1 block text-sm font-medium text-gray-700">Usuário</label>
+      <div class="col-span-2">
+        <input type="text" name="user" id="example4" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500" placeholder="" />
+      </div>
     </div>
+    <div class="grid grid-cols-3 items-center">
+      <label for="example5" class="col-span-1 block text-sm font-medium text-gray-700">Senha</label>
+      <div class="col-span-2">
+        <input type="password" name="pass" id="example5" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500" placeholder="" />
+      </div>
+    </div>
+    <div class="grid grid-cols-3 items-center">
+      <div class="col-span-2 col-start-2 flex items-center space-x-2">
+        <input type="checkbox" id="example6" name="admin" class="h-4 w-4 rounded border-gray-300 text-primary-600 shadow-sm focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 focus:ring-offset-0 disabled:cursor-not-allowed disabled:text-gray-400" />
+        <label for="example6" class="text-sm font-medium text-gray-700">Admin</label>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-3 items-center">
+      <div class="col-span-2 col-start-2">
+        <button class="rounded-lg border border-green-500 bg-green-500 px-5 py-2.5 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-green-700 hover:bg-green-700 focus:ring focus:ring-green-200 disabled:cursor-not-allowed disabled:border-green-300 disabled:bg-green-300" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
 
-    <div><input type="submit" value="Gravar"></div>
-</form>
-
-{% include "inc/foot.html" %}
+{% endblock %}
